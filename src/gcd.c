@@ -119,7 +119,7 @@ PTHREADPOOL_INTERNAL void pthreadpool_parallelize(
 		range_start = range_end;
 	}
 
-	dispatch_apply_f(threads_count.value, DISPATCH_APPLY_AUTO, threadpool, thread_main);
+	dispatch_apply_f(threads_count.value, 0, threadpool, thread_main);
 
 	/* Unprotect the global threadpool structures */
 	dispatch_semaphore_signal(threadpool->execution_semaphore);
